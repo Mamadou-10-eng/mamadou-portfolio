@@ -5,15 +5,19 @@ const COPYRIGHT_YEAR = 2026
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
-      <div className="site-footer__inner">
+    <footer className="mt-8 border-t border-border bg-white/55">
+      <div className="mx-auto grid w-[min(100%_-_2rem,70rem)] gap-4 pt-9 pb-10">
         <div className="site-footer__identity">
-          <p className="site-footer__name">{siteConfig.name}</p>
-          <p className="site-footer__title">{siteConfig.title}</p>
+          <p className="font-display font-bold text-text-strong">
+            {siteConfig.name}
+          </p>
+          <p className="mt-1 text-[0.95rem] text-text-muted">
+            {siteConfig.title}
+          </p>
         </div>
 
         {(hasUrl(socialLinks.github) || hasUrl(socialLinks.linkedin)) && (
-          <ul className="site-footer__links" aria-label="Footer social links">
+          <ul className="flex list-none gap-[1.1rem]" aria-label="Footer social links">
             {hasUrl(socialLinks.github) ? (
               <li>
                 <ExternalLink href={socialLinks.github} className="text-link">
@@ -31,7 +35,7 @@ export default function Footer() {
           </ul>
         )}
 
-        <p className="site-footer__copy">
+        <p className="mt-2 text-[0.92rem] text-text-muted">
           © {COPYRIGHT_YEAR} {siteConfig.name}. All rights reserved.
         </p>
       </div>

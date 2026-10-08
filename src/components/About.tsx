@@ -4,7 +4,7 @@ export default function About() {
   return (
     <section id="about" className="section about" aria-labelledby="about-title">
       <SectionHeading id="about-title" eyebrow="About" title="Building with intention" />
-      <div className="about__body">
+      <div className="grid max-w-[42rem] gap-4 [&_p]:text-[1.08rem]">
         <p>
           I am a junior developer from The Gambia. I have been developing my
           skills through structured software-development training and practical

@@ -598,35 +598,6 @@ code {
   padding-top: 0.4rem;
 }
 
-/* ---------- Contact ---------- */
-
-.contact__panel {
-  max-width: 40rem;
-  padding: 1.75rem;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-}
-
-.contact__lead {
-  margin: 0;
-}
-
-.contact__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  list-style: none;
-  margin: 1.4rem 0 0;
-  padding: 0;
-}
-
-.contact__placeholder {
-  margin: 1.2rem 0 0;
-  color: var(--text-muted);
-}
-
 /* ---------- Motion ---------- */
 
 @media (prefers-reduced-motion: no-preference) {
@@ -744,8 +715,7 @@ code {
     width: min(100% - 1.25rem, var(--container));
   }
 
-  .project-card__body,
-  .contact__panel {
+  .project-card__body {
     padding-inline: 1.15rem;
   }
 

@@ -21,15 +21,15 @@ export default function Contact() {
         description="Open to conversations about internships, collaboration, mentoring, and practical web projects."
       />
 
-      <div className="contact__panel">
-        <p className="contact__lead">
+      <div className="max-w-[40rem] p-7 bg-bg-elevated border border-border rounded-card shadow-card [@media(max-width:480px)]:px-[1.15rem]">
+        <p>
           The best way to reach me is through the channels below. I am based in{' '}
           {siteConfig.location} and focused on growing as a{' '}
           {siteConfig.title.toLowerCase()}.
         </p>
 
         {hasAnyContact ? (
-          <ul className="contact__links">
+          <ul className="flex flex-wrap gap-3 list-none mt-[1.4rem]">
             {hasUrl(socialLinks.email) ? (
               <li>
                 <a
@@ -62,7 +62,7 @@ export default function Contact() {
             ) : null}
           </ul>
         ) : (
-          <p className="contact__placeholder">
+          <p className="mt-[1.2rem] text-text-muted">
             Contact details are being prepared. Add your email, GitHub, and
             LinkedIn URLs in <code>src/data/site.ts</code> to enable these links.
           </p>

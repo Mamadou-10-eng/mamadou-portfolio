@@ -1,41 +1,21 @@
-import { hasUrl, siteConfig, socialLinks } from '../data/site'
-import ExternalLink from './ExternalLink'
+import { siteConfig } from '../data/site'
 
 const COPYRIGHT_YEAR = 2026
 
 export default function Footer() {
   return (
-    <footer className="mt-8 border-t border-border bg-white/55">
-      <div className="mx-auto grid w-[min(100%_-_2rem,70rem)] gap-4 pt-9 pb-10">
-        <div className="site-footer__identity">
-          <p className="font-display font-bold text-text-strong">
+    <footer className="border-t border-border">
+      <div className="mx-auto flex w-[min(100%-2rem,var(--container-page))] flex-col gap-5 py-8 text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
+        <div>
+          <p className="font-display text-[0.95rem] font-semibold text-text-strong">
             {siteConfig.name}
           </p>
-          <p className="mt-1 text-[0.95rem] text-text-muted">
+          <p className="mt-0.5 text-[0.85rem] text-text-muted">
             {siteConfig.title}
           </p>
         </div>
 
-        {(hasUrl(socialLinks.github) || hasUrl(socialLinks.linkedin)) && (
-          <ul className="flex list-none gap-[1.1rem]" aria-label="Footer social links">
-            {hasUrl(socialLinks.github) ? (
-              <li>
-                <ExternalLink href={socialLinks.github} className="text-link">
-                  GitHub
-                </ExternalLink>
-              </li>
-            ) : null}
-            {hasUrl(socialLinks.linkedin) ? (
-              <li>
-                <ExternalLink href={socialLinks.linkedin} className="text-link">
-                  LinkedIn
-                </ExternalLink>
-              </li>
-            ) : null}
-          </ul>
-        )}
-
-        <p className="mt-2 text-[0.92rem] text-text-muted">
+        <p className="text-[0.85rem] text-text-muted">
           © {COPYRIGHT_YEAR} {siteConfig.name}. All rights reserved.
         </p>
       </div>

@@ -1,11 +1,22 @@
 import { experienceItems } from '../data/experience'
+import { useReveal } from '../hooks/useReveal'
+import { sectionClass } from '../styles/layout'
 import SectionHeading from './SectionHeading'
 
+const REVEAL_DELAYS = [
+  '[--reveal-delay:0ms]',
+  '[--reveal-delay:80ms]',
+  '[--reveal-delay:160ms]',
+  '[--reveal-delay:240ms]',
+]
+
 export default function Experience() {
+  const ref = useReveal<HTMLOListElement>()
+
   return (
     <section
       id="experience"
-      className="section experience"
+      className={sectionClass}
       aria-labelledby="experience-title"
     >
       <SectionHeading
@@ -15,24 +26,27 @@ export default function Experience() {
         description="An honest look at how I have been developing as a software developer."
       />
 
-      <ol className="grid list-none gap-4">
+      <ol
+        ref={ref}
+        className="reveal-group relative ml-1 grid list-none gap-10 border-l border-border pl-8"
+      >
         {experienceItems.map((item, index) => (
           <li
             key={item.id}
-            className="grid grid-cols-[auto_1fr] gap-y-4 gap-x-5 py-[1.35rem] px-[1.4rem] [@media(max-width:480px)]:px-[1.15rem] bg-bg-elevated border border-border rounded-card shadow-card motion-safe:animate-rise-in"
+            className={`reveal-child relative ${REVEAL_DELAYS[index] ?? ''}`}
           >
             <span
-              className="font-display font-bold text-[1.1rem] leading-[1.2] text-accent"
+              className="absolute -left-11 top-0 flex h-6 w-6 items-center justify-center rounded-full border border-border bg-bg font-display text-[0.7rem] font-semibold text-accent"
               aria-hidden="true"
             >
               {String(index + 1).padStart(2, '0')}
             </span>
-            <div className="experience__content">
-              <h3 className="mb-[0.45rem] font-display text-[1.15rem] font-bold text-text-strong">
-                {item.title}
-              </h3>
-              <p className="text-text">{item.description}</p>
-            </div>
+            <h3 className="font-display text-[1.15rem] font-semibold text-text-strong">
+              {item.title}
+            </h3>
+            <p className="mt-2 max-w-[42rem] leading-[1.7] text-text">
+              {item.description}
+            </p>
           </li>
         ))}
       </ol>

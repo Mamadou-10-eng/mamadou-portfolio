@@ -1,9 +1,12 @@
 import type { Project } from '../types'
+import alHudaImage from '../assets/images/al-huda.png'
+import chopChopImage from '../assets/images/chop-chop-restaurant.png'
+import waecPrepImage from '../assets/images/weac-pep-gambia.png'
 
 /**
  * Featured projects.
  * To add a screenshot later:
- * 1. Place the image in src/assets/projects/ (e.g. alhuda.png)
+ * 1. Place the image in src/assets/images/ (e.g. alhuda.png)
  * 2. Import it at the top of this file
  * 3. Set `imageSrc` and `imageAlt` on the project
  *
@@ -18,6 +21,8 @@ export const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'Vite', 'Tailwind CSS'],
     status: 'Live',
     liveUrl: 'https://alhuda-production.vercel.app/',
+    imageSrc: alHudaImage,
+    imageAlt: 'Al-Huda Islamic Bilingual School website homepage',
   },
   {
     id: 'chop-chop',
@@ -28,6 +33,8 @@ export const projects: Project[] = [
     status: 'Live',
     liveUrl:
       'https://5-chop-chop-restaurant-website-react-4h5pym5wb.vercel.app/',
+    imageSrc: chopChopImage,
+    imageAlt: 'Chop-Chop Restaurant website homepage',
   },
   {
     id: 'waec-prep',
@@ -36,5 +43,7 @@ export const projects: Project[] = [
       'A learning platform project focused on helping students prepare for WAEC examinations in The Gambia.',
     technologies: ['Next.js', 'TypeScript', 'PostgreSQL', 'Prisma'],
     status: 'In development',
+    imageSrc: waecPrepImage,
+    imageAlt: 'WAEC Prep Gambia platform screenshot',
   },
 ]

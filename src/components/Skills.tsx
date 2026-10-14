@@ -1,20 +1,25 @@
 import { skillCategories } from '../data/skills'
+import { hasSkillIcon } from '../data/skillIcons'
+import { useReveal } from '../hooks/useReveal'
+import { sectionClass } from '../styles/layout'
 import SectionHeading from './SectionHeading'
+import SkillIcon from './SkillIcon'
 
-const STAGGER_DELAYS = [
-  '',
-  '[&:nth-child(2)]:[animation-delay:0.06s]',
-  '[&:nth-child(3)]:[animation-delay:0.12s]',
-  '[&:nth-child(4)]:[animation-delay:0.18s]',
+const REVEAL_DELAYS = [
+  '[--reveal-delay:0ms]',
+  '[--reveal-delay:80ms]',
+  '[--reveal-delay:160ms]',
+  '[--reveal-delay:240ms]',
 ]
 
+const skillTileClass =
+  'inline-flex h-12 w-12 items-center justify-center rounded-xl border border-border bg-bg-elevated transition-colors duration-200 hover:border-accent/50'
+
 export default function Skills() {
+  const ref = useReveal<HTMLDivElement>()
+
   return (
-    <section
-      id="skills"
-      className="section skills"
-      aria-labelledby="skills-title"
-    >
+    <section id="skills" className={sectionClass} aria-labelledby="skills-title">
       <SectionHeading
         id="skills-title"
         eyebrow="Skills"
@@ -22,22 +27,32 @@ export default function Skills() {
         description="Tools and technologies I use across frontend, backend, databases, and workflow."
       />
 
-      <div className="grid grid-cols-2 gap-[1.15rem] [@media(max-width:900px)]:grid-cols-1">
+      <div ref={ref} className="reveal-group border-t border-border">
         {skillCategories.map((category, index) => (
           <article
             key={category.id}
-            className={`bg-bg-elevated border border-border rounded-card py-[1.35rem] px-[1.4rem] [@media(max-width:480px)]:px-[1.15rem] shadow-card motion-safe:animate-rise-in ${STAGGER_DELAYS[index] ?? ''}`}
+            className={`reveal-child grid gap-4 border-b border-border py-6 sm:grid-cols-[10rem_1fr] sm:items-center sm:gap-8 ${REVEAL_DELAYS[index] ?? ''}`}
           >
-            <h3 className="mb-4 font-display text-[1.15rem] font-bold text-text-strong">
+            <h3 className="text-[0.75rem] font-semibold uppercase tracking-[0.14em] text-text-muted">
               {category.title}
             </h3>
-            <ul className="flex flex-wrap gap-[0.55rem] list-none">
+            <ul className="flex flex-wrap gap-3 list-none">
               {category.skills.map((skill) => (
                 <li
                   key={skill}
-                  className="py-[0.4rem] px-3 rounded-[999px] bg-bg-muted border border-transparent text-text-strong text-[0.92rem] font-semibold"
+                  title={skill}
+                  className={skillTileClass}
                 >
-                  {skill}
+                  {hasSkillIcon(skill) ? (
+                    <>
+                      <SkillIcon skill={skill} />
+                      <span className="sr-only">{skill}</span>
+                    </>
+                  ) : (
+                    <span className="px-1 text-[0.8rem] font-medium">
+                      {skill}
+                    </span>
+                  )}
                 </li>
               ))}
             </ul>

@@ -32,7 +32,7 @@ export const projects: Project[] = [
     technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vite'],
     status: 'Live',
     liveUrl:
-      'https://5-chop-chop-restaurant-website-react-4h5pym5wb.vercel.app/',
+      'https://5-chop-chop-restaurant-website-reac-rosy.vercel.app/',
     imageSrc: chopChopImage,
     imageAlt: 'Chop-Chop Restaurant website homepage',
   },
